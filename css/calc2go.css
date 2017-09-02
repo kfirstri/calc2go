@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Alef');
+
+body {
+    direction: rtl;
+    font-family: 'Alef', sans-serif;
+    margin: 0px;
+}
+
+div#container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+    div.row {
+        border: 1px solid black;
+    }
+
+    div#app {
+        display: flex;
+    }
+
+        div.column {
+            border: 1px solid red;
+            flex-grow: 1;
+        }
+
+div.title {
+    text-align: center;
+    font-size: 35px;
+    padding: 5px 0;
+}

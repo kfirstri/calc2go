@@ -42,3 +42,7 @@ div.map {
 div#trip {
     padding: 10px;
 }
+
+div.time {
+    margin-top: 15px;
+}

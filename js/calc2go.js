@@ -31,12 +31,24 @@ var app = new Vue({
     },
     computed: {
         total_distance: function() {
-            return this.waypoints.reduce(function(sum, val) {
+            var km =  this.waypoints.reduce(function(sum, val) {
                 return sum + val.distance
             }, 0);
+
+            return km / 1000;
         },
         total_time: function() {
             return Math.ceil(moment(this.end_time).diff(moment(this.start_time), 'hours', 'minutes'))
+        },
+        km_price: function() {
+            var FIRST_KM = 50;
+            var FIRST_MULT = 2;
+
+            if (this.total_distance <= FIRST_KM) {
+                return this.total_distance * FIRST_MULT;
+            }
+
+            return FIRST_KM * FIRST_MULT + (this.total_distance - FIRST_KM);
         },
         hours_at_night: function() {
             

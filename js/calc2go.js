@@ -26,8 +26,8 @@ var app = new Vue({
                 distance: 0
             }
         ],
-        start_time: '',
-        end_time: ''
+        day_time: 0,
+        night_time: 0
     },
     computed: {
         total_distance: function() {
@@ -38,20 +38,28 @@ var app = new Vue({
             return km / 1000;
         },
         total_time: function() {
-            return Math.ceil(moment(this.end_time).diff(moment(this.start_time), 'hours', 'minutes'))
+            return parseInt(this.day_time) + parseInt(this.night_time);
         },
         km_price: function() {
-            var FIRST_KM = 50;
+            var FIRST_KMS = 50;
             var FIRST_MULT = 2;
 
-            if (this.total_distance <= FIRST_KM) {
+            if (this.total_distance <= FIRST_KMS) {
                 return this.total_distance * FIRST_MULT;
             }
 
-            return FIRST_KM * FIRST_MULT + (this.total_distance - FIRST_KM);
+            return FIRST_KMS * FIRST_MULT + (this.total_distance - FIRST_KMS);
         },
-        hours_at_night: function() {
-            
+        time_price: function() {
+            var DAY_TIME_PRICE = 20;
+            var NIGHT_TIME_PRICE = DAY_TIME_PRICE / 2;
+            var DAY_PRICE = 180;
+
+            if (this.total_time > 9) {
+                return DAY_PRICE;
+            }
+
+            return parseInt(this.day_time) * DAY_TIME_PRICE + parseInt(this.night_time) * NIGHT_TIME_PRICE;
         }
     },
     methods: {

@@ -30,12 +30,19 @@
                         <div>תשלום עבור קילומטרים: {{ km_price }} ש״ח</div>
                     </div>
                     <div class="time">
-                        משעה
-                        <input type="datetime-local" v-model="start_time">
-                        עד שעה
-                        <input type="datetime-local" v-model="end_time">
+                        <div>
+                            שעותת ביום (7 בבוקר עד 11 בלילה)
+                            <input type="number" v-model="day_time">
+                        </div>
+                        <div>
+                            שעות בלילה (11 בלילה ועד 7 בבוקר)
+                            <input type="number" v-model="night_time">
+                        </div>
                         <div>סה״כ: {{ total_time }} שעות.</div>
+                        <div>תשלום עבור שעות עם הרכב: {{ time_price }} ש״ח</div>
                     </div>
+
+                    <div>סה״כ: {{ km_price + time_priceע }} ש״ח.</div>
                 </div>
                 <div class="column map">
                     <gmap-map :center="{lat:32.08, lng:34.8}" :zoom=13 ref="map" class="map">

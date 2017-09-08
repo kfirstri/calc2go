@@ -10,24 +10,35 @@ div#container {
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
     div.row {
-        border: 1px solid black;
+        padding: 10px;
     }
 
     div#app {
         display: flex;
+        flex-direction: row;
+        flex: 50% 50%;
     }
 
         div.column {
-            border: 1px solid red;
-            flex-grow: 1;
+            flex: 1 1 50%;
+            border: 1px solid black;
+            margin: 5px;
         }
 
 div.title {
     text-align: center;
     font-size: 35px;
     padding: 5px 0;
+}
+
+div.map {
+    height: 800px;
+}
+
+div#trip {
+    padding: 10px;
 }

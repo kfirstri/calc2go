@@ -4,6 +4,9 @@
     <title>Calc2Go</title>
 
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.js"></script> 
+
     <script src="js/vue-google-maps.js"></script>
 
     <link rel="stylesheet" href="css/calc2go.css">
@@ -15,11 +18,27 @@
         </div>
         <div class="row">
             <div id="app">
-                <div class="column">
-                    {{ message }}
+                <div class="column" id="trip">
+                    <div v-for="(input, index) in waypoints" v-bind:key="index" class="data">
+                        <input type="text" v-model="input.origin" v-bind:disabled="index > 0" placeholder="מאיפה?">
+                        <input type="text" v-model="input.destination" placeholder="לאן?">
+                        <input type="button" v-on:click="do_click(input)" value="חשב" />
+                        סה״כ ק״מ: {{ input.distance / 1000 }}
+                    </div>
+                    <div class="total">
+                        סה״כ: {{ total_distance }} ק״מ
+                    </div>
+                    <div class="time">
+                        משעה
+                        <input type="datetime-local" v-model="start_time">
+                        עד שעה
+                        <input type="datetime-local" v-model="end_time">
+                        <div>סה״כ: {{ total_time }} שעות.</div>
+                    </div>
                 </div>
-                <div class="column">
-                    MAP HERE
+                <div class="column map">
+                    <gmap-map :center="{lat:32.08, lng:34.8}" :zoom=13 ref="map" class="map">
+                    </gmap-map>
                 </div>
             </div>
         </div>

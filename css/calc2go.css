@@ -46,3 +46,7 @@ div#trip {
 div.time {
     margin-top: 15px;
 }
+
+div#total {
+    font-weight: bold;
+}

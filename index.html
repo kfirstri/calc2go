@@ -42,7 +42,7 @@
                         <div>תשלום עבור שעות עם הרכב: {{ time_price }} ש״ח</div>
                     </div>
 
-                    <div>סה״כ: {{ km_price + time_price }} ש״ח.</div>
+                    <div id="total">סה״כ: {{ km_price + time_price }} ש״ח.</div>
                 </div>
                 <div class="column map">
                     <gmap-map :center="{lat:32.08, lng:34.8}" :zoom=13 ref="map" class="map">

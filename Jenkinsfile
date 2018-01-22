@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+    string(defaultValue: '', description: 'kfir', name: 'THE_VERSION')
+  }
   stages {
     stage('first+stage') {
       parallel {
